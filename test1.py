@@ -3,7 +3,7 @@
 # Tanggal: 28 September 2025
 
 # Definisi Tipe Bentukan Point 3D
-type ThreeDPoint = tuple[float, float, float]
+ThreeDPoint = tuple[float, float, float]
 
 # Konstruktor
 def GaweTitik3D(x: float, y: float, z: float) -> ThreeDPoint:
@@ -22,25 +22,21 @@ def JukukApotema(p: ThreeDPoint) -> float:
     return p[2]
 
 
-# Fungsi bantu: menghitung panjang sisi segitiga dalam ruang 3D
-def PanjangSisi(a: ThreeDPoint, b: ThreeDPoint) -> float:
-    return (((JukukAbsis(b) - JukukAbsis(a)) ** 2) +
-            ((JukukOrdinat(b) - JukukOrdinat(a)) ** 2) +
-            ((JukukApotema(b) - JukukApotema(a)) ** 2)) ** 0.5
-
-
-# Fungsi utama: menghitung luas segitiga 3D dengan rumus Heron
+# Fungsi utama: menghitung luas segitiga 3D dengan rumus cross product
 def LuasSegiTelu(p1: ThreeDPoint, p2: ThreeDPoint, p3: ThreeDPoint) -> float:
-    a = PanjangSisi(p1, p2)
-    b = PanjangSisi(p2, p3)
-    c = PanjangSisi(p3, p1)
+    ux = JukukAbsis(p2) - JukukAbsis(p1)
+    uy = JukukOrdinat(p2) - JukukOrdinat(p1)
+    uz = JukukApotema(p2) - JukukApotema(p1)
 
-    s = (a + b + c) / 2
-    luas = (s * (s - a) * (s - b) * (s - c)) ** 0.5
-    return luas
+    vx = JukukAbsis(p3) - JukukAbsis(p1)
+    vy = JukukOrdinat(p3) - JukukOrdinat(p1)
+    vz = JukukApotema(p3) - JukukApotema(p1)
 
-
-
+    nx = uy*vz - uz*vy
+    ny = uz*vx - ux*vz
+    nz = ux*vy - uy*vx
+    return round(0.5 * (nx**2 + ny**2 + nz**2)**0.5, 5)
+    
 # DENGAN INI SAYA MENYATAKAN BAHWA SAYA MENGERJAKAN SENDIRI TANPA BANTUAN KECERDASAN ARTIFISAL
 # JANGAN DIUBAH!!
 print(eval(input()))
