@@ -40,8 +40,6 @@ def LuasSegiTelu(p1: ThreeDPoint, p2: ThreeDPoint, p3: ThreeDPoint) -> float:
     return luas
 
 
-# Contoh input yang valid:
-# LuasSegiTelu((0, 0, 0), (3, 0, 0), (0, 4, 0))
 
 # DENGAN INI SAYA MENYATAKAN BAHWA SAYA MENGERJAKAN SENDIRI TANPA BANTUAN KECERDASAN ARTIFISAL
 # JANGAN DIUBAH!!
